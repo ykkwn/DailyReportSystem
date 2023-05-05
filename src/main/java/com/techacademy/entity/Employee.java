@@ -2,6 +2,7 @@ package com.techacademy.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "employee")
+@Where(clause = "delete_flag = 0")
 public class Employee {
 
     /** 主キー。自動生成*/
@@ -27,7 +31,7 @@ public class Employee {
     private String name;
 
     /** 登録日時。null不許可*/
-    @Column(nullable = false)
+    @Column(nullable = false, updatable=false)
     private LocalDateTime createdAt;
 
     /** 更新日時。null不許可*/
@@ -38,6 +42,6 @@ public class Employee {
     @Column(nullable = false)
     private Integer deleteFlag;
 
-    @OneToOne(mappedBy="employee")
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Authentication authentication;
 }
