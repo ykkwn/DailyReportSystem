@@ -5,16 +5,25 @@ header {
     background-color: #333;
 }
 
-h1 {
-    color: #fff;
-    margin: 0;
-    padding: 0;
+ul {
+    display: flex;
+    justify-content: space-around;
 }
 
+ul li {
+    list-style: none;
+    margin: 0;
+    padding: 20px 20px;
+    font-size: 20px;
+}
 
-h2 {
-    font-weight: normal;
-    font-size: 32px;
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header ul li {
+    color: #fff;
 }
 
 table {
