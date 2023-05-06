@@ -6,11 +6,17 @@
 <link rel="stylesheet" th:href="@{/css/employee/detail.css}">
 </head>
 <body th:object="${employee}">
-    <header>
-        <h1>日報管理システム</h1>
+     <header>
+        <ul>
+            <li><a th:href="@{/employee/list}" th:text="日報管理システム"></a></li>
+            <li><a href="" th:text="従業員管理"></a></li>
+            <li><a href="" th:text="日報管理"></a></li>
+            <li th:text="${employee.name} + ' さん'"></li>
+            <li><a href="" th:text="ログアウト"></a></li>
+        </ul>
     </header>
 
-    <h2>id:<span th:text="${employee.id}"></span>の従業員情報　詳細ページ</h2>
+    <h1>id:<span th:text="${employee.id}"></span>の従業員情報　詳細ページ</h1>
     <table>
         <tr>
             <td>社員番号</td>

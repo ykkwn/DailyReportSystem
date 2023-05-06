@@ -6,9 +6,9 @@
 <link rel="stylesheet" th:href="@{/css/employee/update.css}">
 </head>
 <body>
-    <header class="header-top">
+    <header>
         <ul>
-            <li><a href="" th:text="日報管理システム"></a></li>
+            <li><a th:href="@{/employee/list}" th:text="日報管理システム"></a></li>
             <li><a href="" th:text="従業員管理"></a></li>
             <li><a href="" th:text="日報管理"></a></li>
             <li th:text="${employee.name} + ' さん'"></li>
