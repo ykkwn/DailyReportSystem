@@ -11,20 +11,15 @@
 
     <p class="err" th:if="${param.error}">ユーザ名かパスワードが一致しませんでした。</p>
     <form method="post" action="/login" th:action="@{/login}">
-    <table>
-        <tr>
-            <td><label for="loginuser">社員番号：</label></td>
-            <td><input type="text" id="username" name="username" value="ktaro"></td>
-        </tr>
-        <tr>
-            <td><label for="password">パスワード：</label></td>
-            <td><input type="text" id="password" name="password" value="ktaro"></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" name="loginRun" value="ログイン"></td>
-        </tr>
-    </table>
+
+            <label for="loginuser">社員番号</label>
+            <input type="text" id="username" name="username" value="ktaro">
+
+            <label for="password">パスワード</label>
+            <input type="text" id="password" name="password" value="ktaro">
+
+            <br>
+            <input type="submit" name="loginRun" value="ログイン">
     </form>
 </body>
 </html>
