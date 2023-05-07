@@ -4,3 +4,24 @@ h1 {
     background: #333;
     color: #fff;
 }
+
+.err {
+    color: red;
+}
+
+form {
+    width: 100%;
+}
+
+label {
+    display: block;
+    line-height: 150%;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
