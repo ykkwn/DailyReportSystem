@@ -23,6 +23,10 @@ public class UserDetail implements UserDetails {
         return employee;
     }
 
+    public String loginName() {
+        return employee.getName();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
