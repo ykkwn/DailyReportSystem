@@ -21,6 +21,7 @@
     <form method="post" th:action="@{/employee/register}">
        <label for="code">社員番号</label>
        <input type="text" th:field="${employee.authentication.code}" required autocomplete="off">
+       <span th:if="${employee.authentication.code != null}" class="err">その社員番号は存在しています</span>
 
        <label for="name">氏名</label>
        <input type="text" th:field="${employee.name}" required autocomplete="off">
