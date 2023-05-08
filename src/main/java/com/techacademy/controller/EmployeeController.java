@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.techacademy.entity.Employee;
+import com.techacademy.service.AuthenticationService;
 import com.techacademy.service.EmployeeService;
 
 @Controller
@@ -18,9 +19,11 @@ import com.techacademy.service.EmployeeService;
 public class EmployeeController {
 
     private final EmployeeService service;
+    private final AuthenticationService authenticationService;
 
-    public EmployeeController(EmployeeService service) {
+    public EmployeeController(EmployeeService service, AuthenticationService authenticationService) {
         this.service = service;
+        this.authenticationService = authenticationService;
     }
 
     @GetMapping("/list")
@@ -44,6 +47,11 @@ public class EmployeeController {
         LocalDateTime now = LocalDateTime.now();
         employee.getAuthentication().setEmployee(employee);
 
+        // 社員番号のDB重複を確認
+        if(authenticationService.existCode(employee.getAuthentication().getCode())) {
+            return getRegister(employee);
+        }
+
         employee.setDeleteFlag(0);
         employee.setCreatedAt(now);
         employee.setUpdatedAt(now);
@@ -57,7 +65,7 @@ public class EmployeeController {
     @GetMapping("/detail/{id}/")
     public String getDetail(@PathVariable("id") Integer id, Model model) {
         // Modelに登録
-            model.addAttribute("employee", service.getEmployee(id));
+        model.addAttribute("employee", service.getEmployee(id));
         // employeeの詳細画面に遷移
         return "employee/detail";
     }
