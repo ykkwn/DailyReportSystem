@@ -32,7 +32,7 @@ public class EmployeeController {
     public String getList(@AuthenticationPrincipal UserDetail userDetail, Model model) {
         //全件検索結果をModelに格納
         model.addAttribute("employeelist", service.getEmployeeList());
-        model.addAttribute("username", userDetail.getUsername());
+        model.addAttribute("username", userDetail.loginName());
         // employee/list.htmlに画面遷移
         return "employee/list";
     }
@@ -41,7 +41,7 @@ public class EmployeeController {
     @GetMapping("/register")
     public String getRegister(@ModelAttribute Employee employee, @AuthenticationPrincipal UserDetail userDetail, Model model) {
 
-        model.addAttribute("username", userDetail.getUsername());
+        model.addAttribute("username", userDetail.loginName());
         // employee登録画面に遷移
         return "employee/register";
     }
@@ -71,7 +71,7 @@ public class EmployeeController {
     public String getDetail(@PathVariable("id") Integer id,@AuthenticationPrincipal UserDetail userDetail, Model model) {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
-        model.addAttribute("username", userDetail.getUsername());
+        model.addAttribute("username", userDetail.loginName());
         // employeeの詳細画面に遷移
         return "employee/detail";
     }
@@ -81,7 +81,7 @@ public class EmployeeController {
     public String getEmployee(@PathVariable("id") Integer id, @AuthenticationPrincipal UserDetail userDetail, Model model) {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
-        model.addAttribute("username", userDetail.getUsername());
+        model.addAttribute("username", userDetail.loginName());
         // employeeの詳細画面に遷移
         return "employee/update";
     }
