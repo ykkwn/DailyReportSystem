@@ -12,7 +12,7 @@
             <li><a href="" th:text="従業員管理"></a></li>
             <li><a href="" th:text="日報管理"></a></li>
             <li th:text="${employee.name} + ' さん'"></li>
-            <li><a href="" th:text="ログアウト"></a></li>
+            <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
         </ul>
     </header>
 
