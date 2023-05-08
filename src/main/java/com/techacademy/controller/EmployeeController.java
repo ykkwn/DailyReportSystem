@@ -2,6 +2,7 @@ package com.techacademy.controller;
 
 import java.time.LocalDateTime;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.techacademy.entity.Employee;
 import com.techacademy.service.AuthenticationService;
 import com.techacademy.service.EmployeeService;
+import com.techacademy.service.UserDetail;
 
 @Controller
 @RequestMapping("/employee")
@@ -27,29 +29,32 @@ public class EmployeeController {
     }
 
     @GetMapping("/list")
-    public String getList(Model model) {
+    public String getList(@AuthenticationPrincipal UserDetail userDetail, Model model) {
         //全件検索結果をModelに格納
         model.addAttribute("employeelist", service.getEmployeeList());
+        model.addAttribute("username", userDetail.getUsername());
         // employee/list.htmlに画面遷移
         return "employee/list";
     }
 
     /** Employee登録画面を表示*/
     @GetMapping("/register")
-    public String getRegister(@ModelAttribute Employee employee) {
+    public String getRegister(@ModelAttribute Employee employee, @AuthenticationPrincipal UserDetail userDetail, Model model) {
+
+        model.addAttribute("username", userDetail.getUsername());
         // employee登録画面に遷移
         return "employee/register";
     }
 
     /** Employee登録処理*/
     @PostMapping("/register")
-    public String postRegister(Employee employee) {
+    public String postRegister(Employee employee, @AuthenticationPrincipal UserDetail userDetail, Model model) {
         LocalDateTime now = LocalDateTime.now();
         employee.getAuthentication().setEmployee(employee);
 
         // 社員番号のDB重複を確認
         if(authenticationService.existCode(employee.getAuthentication().getCode())) {
-            return getRegister(employee);
+            return getRegister(employee, userDetail, model);
         }
 
         employee.setDeleteFlag(0);
@@ -63,18 +68,20 @@ public class EmployeeController {
 
     /** Employeeの詳細画面の表示*/
     @GetMapping("/detail/{id}/")
-    public String getDetail(@PathVariable("id") Integer id, Model model) {
+    public String getDetail(@PathVariable("id") Integer id,@AuthenticationPrincipal UserDetail userDetail, Model model) {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
+        model.addAttribute("username", userDetail.getUsername());
         // employeeの詳細画面に遷移
         return "employee/detail";
     }
 
     /** Employeeの更新画面の表示*/
     @GetMapping("update/{id}")
-    public String getEmployee(@PathVariable("id") Integer id, Model model) {
+    public String getEmployee(@PathVariable("id") Integer id, @AuthenticationPrincipal UserDetail userDetail, Model model) {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
+        model.addAttribute("username", userDetail.getUsername());
         // employeeの詳細画面に遷移
         return "employee/update";
     }
