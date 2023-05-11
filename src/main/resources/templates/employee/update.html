@@ -17,6 +17,7 @@
     </header>
 
     <h1 th:text="'ID:' + ${employee.id} + 'の従業員情報　編集ページ'"></h1>
+    <p>（パスワードは変更する場合のみ入力してください）</p>
 
     <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}" th:object="${employee}">
 
@@ -27,10 +28,10 @@
        <input type="text" th:field="${employee.name}" th:value="${employee.name}" required autocomplete="off">
 
         <label for="pass">パスワード</label>
-        <input type="password" th:field="${employee.authentication.password}" required>
+        <input type="password" th:field="${employee.authentication.password}">
 
         <label for="role">権限</label>
-        <select th:field="${employee.authentication.role}">
+        <select th:field="${employee.authentication.role}" required>
             <option value="" th:text="選択してください"></option>
             <option th:each="item :${T(com.techacademy.entity.Authentication.Role).values()}"
                     th:value="${item}" th:text="${item}">
