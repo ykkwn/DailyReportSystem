@@ -2,30 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>従業員新規登録ページ</title>
+<title>日報編集ページ</title>
 <link rel="stylesheet" th:href="@{/css/employee/update.css}">
 </head>
 <body>
     <header>
         <ul>
-            <li><a th:href="@{/employee/list}" th:text="日報管理システム"></a></li>
-            <li><a href="" th:text="従業員管理"></a></li>
-            <li><a href="" th:text="日報管理"></a></li>
-            <li th:text="${username} + ' さん'"></li>
-            <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
+           <li><a th:href="@{/report/list}" th:text="日報管理システム"></a></li>
+           <li><a th:href="@{/employee/list}" th:text="従業員管理"></a></li>
+           <li><a th:href="@{/report/list}" th:text="日報管理"></a></li>
+           <li th:text="${username} + ' さん'"></li>
+           <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
         </ul>
     </header>
 
-    <h1 th:text="'ID:' + ${employee.id} + 'の従業員情報　編集ページ'"></h1>
+     <h1 th:text="'ID:' + ${employee.id} + 'の従業員情報　編集ページ'"></h1>
     <p>（パスワードは変更する場合のみ入力してください）</p>
 
     <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}" th:object="${employee}">
 
-       <label for="code">社員番号</label>
-       <input type="hidden" th:field="*{authentication.code}" th:text="*{authentication.code}" required autocomplete="off">
+        <label for="code">社員番号</label>
+        <input type="hidden" th:field="*{authentication.code}" th:text="*{authentication.code}" required autocomplete="off">
 
-       <label for="name">氏名</label>
-       <input type="text" th:field="${employee.name}" th:value="${employee.name}" required autocomplete="off">
+        <label for="name">氏名</label>
+        <input type="text" th:field="${employee.name}" th:value="${employee.name}" required autocomplete="off">
 
         <label for="pass">パスワード</label>
         <input type="password" th:field="${employee.authentication.password}">

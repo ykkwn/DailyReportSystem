@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>日報管理システム</title>
+<title>日報詳細ページ</title>
 <link rel="stylesheet" th:href="@{/css/employee/detail.css}">
 </head>
 <body th:object="${employee}">
      <header>
         <ul>
-            <li><a th:href="@{/employee/list}" th:text="日報管理システム"></a></li>
-            <li><a href="" th:text="従業員管理"></a></li>
-            <li><a href="" th:text="日報管理"></a></li>
-            <li th:text="${username} + ' さん'"></li>
-            <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
+           <li><a th:href="@{/}" th:text="日報管理システム"></a></li>
+           <li><a th:href="@{/employee/list}" th:text="従業員管理"></a></li>
+           <li><a th:href="@{/report/list}" th:text="日報管理"></a></li>
+           <li th:text="${username} + ' さん'"></li>
+           <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
         </ul>
     </header>
 
