@@ -25,19 +25,20 @@ header ul li {
     color: #fff;
 }
 
-form {
-    width: 100%;
-}
-
 label {
     display: block;
-    line-height: 150%;
+    margin-top: 10px;
 }
 
+select,
 input[type="text"],
 input[type="password"] {
     padding: 5px 10px;
     width: 200px;
+}
+
+input[type="submit"] {
+    margin: 10px 0;
 }
 
 .err {
