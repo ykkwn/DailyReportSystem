@@ -37,6 +37,7 @@ public class EmployeeController {
         //全件検索結果をModelに格納
         model.addAttribute("employeelist", service.getEmployeeList());
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // employee/list.htmlに画面遷移
         return "employee/list";
     }
@@ -46,6 +47,7 @@ public class EmployeeController {
     public String getRegister(Employee employee, @AuthenticationPrincipal UserDetail userDetail, Model model) {
 
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // employee登録画面に遷移
         return "employee/register";
     }
@@ -80,6 +82,7 @@ public class EmployeeController {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // employeeの詳細画面に遷移
         return "employee/detail";
     }
@@ -90,6 +93,7 @@ public class EmployeeController {
         // Modelに登録
         model.addAttribute("employee", service.getEmployee(id));
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // employeeの詳細画面に遷移
         return "employee/update";
     }

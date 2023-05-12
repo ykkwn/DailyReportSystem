@@ -33,6 +33,7 @@ public class ReportController {
       //全件検索結果をModelに格納
         model.addAttribute("reportlist", service.getReportList());
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
 
         return "report/list";
     }
@@ -47,6 +48,7 @@ public class ReportController {
 
         model.addAttribute("date", date);
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // report登録画面に遷移
         return "report/register";
     }
@@ -68,6 +70,7 @@ public class ReportController {
 
         model.addAttribute("report", service.getReport(id));
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
 
         return "report/detail";
     }
@@ -78,6 +81,7 @@ public class ReportController {
         // Modelに登録
         model.addAttribute("report", service.getReport(id));
         model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // employeeの詳細画面に遷移
         return "report/update";
     }

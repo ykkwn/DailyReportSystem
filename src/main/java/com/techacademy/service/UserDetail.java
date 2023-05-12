@@ -32,6 +32,10 @@ public class UserDetail implements UserDetails {
         return employee.getName();
     }
 
+    public String getUserRole() {
+        return employee.getAuthentication().getRole().name();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

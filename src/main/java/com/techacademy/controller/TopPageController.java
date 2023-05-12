@@ -22,9 +22,10 @@ public class TopPageController {
 
 
     @GetMapping("/")
-    public String getTop(@AuthenticationPrincipal UserDetail userDetaile, Model model) {
-        model.addAttribute("reportlist", service.getReportList(userDetaile.getUser()));
-        model.addAttribute("username", userDetaile.loginName());
+    public String getTop(@AuthenticationPrincipal UserDetail userDetail, Model model) {
+        model.addAttribute("reportlist", service.getReportList(userDetail.getUser()));
+        model.addAttribute("username", userDetail.loginName());
+        model.addAttribute("userrole", userDetail.getUserRole());
         // topPage.htmlに画面遷移
         return "topPage";
     }
