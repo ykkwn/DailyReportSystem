@@ -9,7 +9,7 @@
     <header>
         <ul>
            <li><a th:href="@{/report/list}" th:text="日報管理システム"></a></li>
-           <li><a th:href="@{/employee/list}" th:text="従業員管理"></a></li>
+           <li><a th:href="@{/employee/list}" th:text="従業員管理" th:if="${userrole} == '管理者' "></a></li>
            <li><a th:href="@{/report/list}" th:text="日報管理"></a></li>
            <li th:text="${username} + ' さん'"></li>
            <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
