@@ -40,10 +40,10 @@ form {
 
 label {
     display: block;
-    line-height: 150%;
     margin-top: 10px;
 }
 
+select,
 input[type="text"],
 input[type="password"] {
     margin-top: 10px;
@@ -51,12 +51,10 @@ input[type="password"] {
     width: 200px;
 }
 
-select {
-    padding: 5px 10px;
-    width: 100px;
-}
-
 input[type="submit"] {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
+div + div {
+    margin-top: 10px;
+}
