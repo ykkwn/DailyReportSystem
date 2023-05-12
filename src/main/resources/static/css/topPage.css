@@ -24,3 +24,17 @@ header ul li a {
 header ul li {
     color: #fff;
 }
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 800px;
+}
+
+th, td {
+    height: 50px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
