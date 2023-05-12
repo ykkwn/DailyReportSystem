@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>日報一覧</title>
+<link rel="stylesheet" th:href="@{/css/report/list.css}">
+</head>
+<body>
+    <header>
+        <ul>
+           <li><a th:href="@{/}" th:text="日報管理システム"></a></li>
+           <li><a th:href="@{/employee/list}" th:text="従業員管理"></a></li>
+           <li><a th:href="@{/report/list}" th:text="日報管理"></a></li>
+           <li th:text="${username} + ' さん'"></li>
+           <li><a th:href="@{/login}" th:text="ログアウト"></a></li>
+        </ul>
+    </header>
+
+    <h1>日報 一覧</h1>
+    <table>
+        <tr>
+            <th>氏名</th>
+            <th>日付</th>
+            <th>タイトル</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="report : ${reportlist}">
+            <td th:text="${report.employee.name}"></td>
+            <td th:text="${report.reportDate}"></td>
+            <td th:text="${report.content}"></td>
+            <td><a th:href="@{/report/detail/{id}/(id=${report.id})}">詳細を見る</a></td>
+        </tr>
+    </table>
+
+    <p> (全 <span th:text=${#lists.size(reportlist)}></span> 件）</p>
+
+    <div><a th:href="@{/report/register}">新規日報の登録</a></div>
+
+</body>
+</html>

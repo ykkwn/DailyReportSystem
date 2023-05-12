@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+header {
+    background-color: #333;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li {
+    list-style: none;
+    margin: 0;
+    padding: 20px 20px;
+    font-size: 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header ul li {
+    color: #fff;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 800px;
+}
+
+th, td {
+    height: 50px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
